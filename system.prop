@@ -95,6 +95,9 @@ ro.com.android.mobiledata=true
 ro.hardware.alter=Hisilicon Kirin 950
 persist.sys.fingersense=1
 
+# Performance
+ro.am.reschedule_service=true
+
 # local
 ro.config.nfc_hasese=false
 ro.config.hw_nfc_msimce=false
