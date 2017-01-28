@@ -109,7 +109,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 
 TARGET_KERNEL_SOURCE := kernel/huawei/frd
-TARGET_KERNEL_CONFIG := cm_hi3650_defconfig
+TARGET_KERNEL_CONFIG := lineage_hi3650_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true

@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-PRODUCT_NAME := cm_frd
+PRODUCT_NAME := lineage_frd
 BOARD_VENDOR := huawei
 
 PRODUCT_GMS_CLIENTID_BASE := android-huawei
