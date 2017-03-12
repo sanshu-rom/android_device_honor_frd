@@ -32,45 +32,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-# Audio configuration file
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/prebuilts/audio_policy.conf:system/etc/audio_policy.conf
-
-# Misc
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/chargemonitor_config.xml:system/etc/chargemonitor_config.xml \
-    $(LOCAL_PATH)/prebuilts/clatd.conf:system/etc/clatd.conf \
-    $(LOCAL_PATH)/prebuilts/device_monitor_for_nff.conf:system/etc/device_monitor_for_nff.conf \
-    $(LOCAL_PATH)/prebuilts/device_state_monitor.conf:system/etc/device_state_monitor.conf \
-    $(LOCAL_PATH)/prebuilts/factory_modem.cfg:system/etc/factory_modem.cfg \
-    $(LOCAL_PATH)/prebuilts/lhd.conf:system/etc/lhd.conf \
-    $(LOCAL_PATH)/prebuilts/lhd_beta.conf:system/etc/lhd_beta.conf \
-    $(LOCAL_PATH)/prebuilts/topazhp.cfg:system/etc/topazhp.cfg \
-    $(LOCAL_PATH)/prebuilts/vdec_atlas.cfg:system/etc/vdec_atlas.cfg \
-    $(LOCAL_PATH)/prebuilts/viacbp82d_log.bcfg:system/etc/viacbp82d_log.bcfg \
-    $(LOCAL_PATH)/prebuilts/viacbp82d_shutdown_log.bcfg:system/etc/viacbp82d_shutdown_log.bcfg
-
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/prebuilts/gps4774.conf:system/etc/gps4774.conf \
-    $(LOCAL_PATH)/prebuilts/gps4774config.xml:system/etc/gps4774config.xml \
-    $(LOCAL_PATH)/prebuilts/gps4774config_beta.xml:system/etc/gps4774config_beta.xml \
-    $(LOCAL_PATH)/prebuilts/gps4774config_cl.xml:system/etc/gps4774config_cl.xml \
-    $(LOCAL_PATH)/prebuilts/gps4774config_cl_beta.xml:system/etc/gps4774config_cl_beta.xml \
-    $(LOCAL_PATH)/prebuilts/gps_restrict_blacklist.xml:system/etc/gps_restrict_blacklist.xml \
-    $(LOCAL_PATH)/prebuilts/libgps4774.conf:system/etc/libgps4774.conf \
-    $(LOCAL_PATH)/prebuilts/SensorHub.patch:system/etc/SensorHub.patch
-
-# Thermal engine
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/poweroff_thermald.xml:system/etc/poweroff_thermald.xml \
-    $(LOCAL_PATH)/prebuilts/temperaturemonitor_setting.xml:system/etc/temperaturemonitor_setting.xml \
-    $(LOCAL_PATH)/prebuilts/thermald.xml:system/etc/thermald.xml \
-    $(LOCAL_PATH)/prebuilts/thermald_performance.xml:system/etc/thermald_performance.xml \
-    $(LOCAL_PATH)/prebuilts/thermald_performance_qcoff.xml:system/etc/thermald_performance_qcoff.xml \
-    $(LOCAL_PATH)/prebuilts/thermald_qcoff.xml:system/etc/thermald_qcoff.xml
+    $(LOCAL_PATH)/prebuilts/clatd.conf:system/etc/clatd.conf \
+    $(LOCAL_PATH)/prebuilts/gps.conf:system/etc/gps.conf
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -125,30 +90,15 @@ PRODUCT_PACKAGES += \
 
 # Bluedroid conf
 PRODUCT_PACKAGES += \
-    libbt-vendor \
     bt_vendor.conf
 
 # Fingerprint sensor
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/fingerprint.idc:system/usr/idc/fingerprint.idc
-
-PRODUCT_PACKAGES += \
-    fingerprint.kl \
-
 # Gello
 PRODUCT_PACKAGES += \
     Gello
-
-# KEYPAD
-PRODUCT_PACKAGES += \
-    usbaudio.kl
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/cyttsp4_mt.idc:system/usr/idc/cyttsp4_mt.idc \
-    $(LOCAL_PATH)/prebuilts/HUAWEI_HUAWEI_GLASS.idc:system/usr/idc/HUAWEI_HUAWEI_GLASS.idc
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -196,6 +146,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril.config=simactivation
 
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Bootanim
+PRODUCT_PACKAGES += \
+    bootanimation.zip
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -218,13 +176,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
 
 # Wifi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
 PRODUCT_PACKAGES += \
     libwpa_client \
-    dhcpcd.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
