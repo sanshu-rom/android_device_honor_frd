@@ -139,6 +139,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1 \
     persist.service.adb.enable=1
 
+# adb as root
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+
 # HWC
 #PRODUCT_PACKAGES += \
 #    hwcomposer.hi3650
