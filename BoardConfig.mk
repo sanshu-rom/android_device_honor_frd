@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ HISI_TARGET_PRODUCT := hi3650
 ENABLE_CPUSETS := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := hi3650,frd,FRD,FRD-L04,FRD-L14,FRT-AL10T
+TARGET_OTA_ASSERT_DEVICE := hi3650,frd,FRD,FRD-L02,FRD-L04,FRD-L09,FRD-L14,FRD-L19
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
