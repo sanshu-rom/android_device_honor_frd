@@ -26,7 +26,6 @@
 #include <unistd.h>
 
 #include <utils/Log.h>
-#include "property_service.h"
 
 #include "power.h"
 
@@ -110,7 +109,7 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
     // break out early if governor is not interactive
     if (!check_governor()) return;
 
-    if (!on) {
+    if (on) {
         sysfs_write_int(INTERACTIVE_PATH0 "hispeed_freq",
                         profiles0[current_power_profile].hispeed_freq);
         sysfs_write_int(INTERACTIVE_PATH0 "go_hispeed_load",
@@ -282,7 +281,7 @@ static void power_hint(__attribute__((unused)) struct power_module *module,
 
     switch (hint) {
     case POWER_HINT_INTERACTION:
-    case POWER_HINT_LAUNCH_BOOST:
+    case POWER_HINT_LAUNCH:
     case POWER_HINT_CPU_BOOST:
         if (is_profile_valid(current_power_profile) < 0) {
             ALOGD("%s: no power profile selected yet", __func__);
