@@ -153,13 +153,15 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.hi3650 \
+    fstab.zram512m \
+    fstab.zram1024m \
+    fstab.zram1536m \
     init.chip.usb.rc \
     init.hi3650.gps.rc \
     init.hi3650.power.rc \
-    init.hi3650.power.sh \
     init.hi3650.rc \
+    init.hi3650.usb.configfs.rc \
     init.hi3650.usb.rc \
-    init.rc \
     ueventd.hi3650.rc
 
 # LIBShim
@@ -167,16 +169,16 @@ PRODUCT_PACKAGES += \
     libshim_gralloc
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.build.subproduct=F2FS \
     ro.magic.api.version=0.1 \
     ro.enable_boot_charger_mode=0 \
-    persist.sys.root_access=1 \
-    persist.sys.usb.config=adb \
-    persist.service.adb.enable=1
+    persist.sys.usb.config=manufacture,adb \
+    sys.usb.configfs=1 \
+    sys.usb.controller=ff100000.dwc3
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=0 \
-    persist.sys.root_access=1
+    persist.sys.root_access=1 \
+    persist.service.adb.enable=1
 
 # HWC
 #PRODUCT_PACKAGES += \

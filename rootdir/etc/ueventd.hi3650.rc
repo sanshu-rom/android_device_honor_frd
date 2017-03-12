@@ -82,6 +82,7 @@
 /sys/class/leds/torch/brightness			0664  system    system
 /sys/class/leds/torch/flash_thermal_protect		0664  system    system
 /dev/hifi_misc                                          0770  root      audio
+/dev/voice_proxy_vowifi                                 0660  root      audio
 
 /dev/block/mmcblk0	  0660	system	system
 /dev/block/mmcblk0p4      0660	system	system
@@ -95,7 +96,8 @@
 /dev/block/mmcblk0p37	  0660	system	system
 /dev/block/mmcblk0p38	  0660	system	system
 /dev/block/mmcblk0p39	  0660	system	system
-/dev/block/mmcblk0p41	  0660	system	system
+/dev/block/mmcblk0p42	  0660	system	system
+/dev/block/mmcblk0p48	  0660	system	system
 
 /dev/dsm                  0660  system    system
 /dev/hwtc		  0660  system	  system
