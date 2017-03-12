@@ -21,9 +21,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from frd device
 $(call inherit-product, device/huawei/frd/device.mk)
 
+# Vendor
+PRODUCT_RESTRICT_VENDOR_FILES := false
+
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := full_frd
 PRODUCT_DEVICE := frd
-PRODUCT_BRAND := HONOR
+PRODUCT_BRAND := Honor
 PRODUCT_MANUFACTURER := HUAWEI
 PRODUCT_MODEL := HONOR-8
