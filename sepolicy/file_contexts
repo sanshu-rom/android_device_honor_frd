@@ -1,0 +1,64 @@
+
+/system/bin/cs-set					u:object_r:cs-set_exec:s0
+/system/bin/hwpged					u:object_r:hwpged_exec:s0
+/system/bin/imonitor					u:object_r:imonitor_exec:s0
+/system/bin/tui_daemon					u:object_r:tui_daemon_exec:s0
+/system/bin/vr_daemon					u:object_r:vr_daemon_exec:s0
+
+/vendor/bin/atcmdserver					u:object_r:atcmdserver_exec:s0
+/vendor/bin/bastetd					u:object_r:bastetd_exec:s0
+/vendor/bin/data_cleaner				u:object_r:data_cleaner_exec:s0
+/vendor/bin/diagserver					u:object_r:diagserver_exec:s0
+/vendor/bin/glgps4774					u:object_r:gpsd_exec:s0
+/vendor/bin/glgps4774cl					u:object_r:gpsd_exec:s0
+/vendor/bin/gpsdaemon					u:object_r:gpsdaemon_exec:s0
+/vendor/bin/hiscoutmanager				u:object_r:hiscoutmanager_exec:s0
+/vendor/bin/hivwserver					u:object_r:hivwserver_exec:s0
+/vendor/bin/HwCamCfgSvr					u:object_r:hwcamcfgsvr_exec:s0
+/vendor/bin/hwnff					u:object_r:hwnffserver_exec:s0
+/vendor/bin/hwnffserver					u:object_r:hwnffserver_exec:s0
+/vendor/bin/lhd4774					u:object_r:lhd4774_exec:s0
+/vendor/bin/limit_current				u:object_r:limit_current_exec:s0
+/vendor/bin/mac_addr_normalization			u:object_r:mac_addr_normalization_exec:s0
+/vendor/bin/perfhub					u:object_r:perfhub_exec:s0
+/vendor/bin/secure_storage				u:object_r:secure_storage_exec:s0
+/vendor/bin/thermal-daemon                              u:object_r:thermal-daemon_exec:s0
+
+# GPS
+/data/system/gps(/.*)?					u:object_r:gps_data_file:s0
+/dev/ttyAMA3						u:object_r:gps_device:s0
+
+# GPU
+/dev/mali*              				u:object_r:gpu_device:s0
+/dev/memory_throughput  				u:object_r:gpu_device:s0
+
+# Camera
+/data/camera(/.*)?					u:object_r:camera_data_file:s0
+/data/img(/.*)?						u:object_r:camera_data_file:s0
+
+# Audio
+/dev/soundtrigger_dma_drv				u:object_r:audio_device:s0
+/dev/hifi_misc						u:object_r:audio_device:s0
+/dev/hi6402_hifi_misc   				u:object_r:audio_device:s0
+/dev/deviceboxID       					u:object_r:audio_device:s0
+/dev/maxim_smartpa_dev  				u:object_r:audio_device:s0
+
+# Video
+/dev/v4l-subdev*				        u:object_r:video_device:s0
+/dev/media*						u:object_r:video_device:s0
+/dev/imgsysbrg_vdec0					u:object_r:video_device:s0
+
+# Bluetooth
+/dev/ttyAMA4						u:object_r:hci_attach_dev:s0
+
+# OEM
+/sbin/oeminfo_nvm_server 				u:object_r:oeminfo_nvm_exec:s0
+/dev/block/bootdevice/by-name/oeminfo			u:object_r:oeminfo_nvm_device:s0
+
+# Sensors
+/dev/sensorhub						u:object_r:sensors_device:s0
+/dev/motionhub						u:object_r:sensors_device:s0
+
+# teecd
+/dev/tc_ns_client					u:object_r:teecd_device:s0
+/dev/block/mmcblk0rpmb  				u:object_r:teecd_blkdev:s0

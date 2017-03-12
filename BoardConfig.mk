@@ -140,6 +140,10 @@ TARGET_RIL_VARIANT := proprietary
 # Enable WEBGL
 ENABLE_WEBGL := true
 
+# Sepolicy
+BOARD_SEPOLICY_DIRS += \
+	device/huawei/frd/sepolicy
+
 # Wifi
 TARGET_USES_64_BIT_BCMDHD	 := true
 BOARD_WLAN_DEVICE                := bcmdhd
