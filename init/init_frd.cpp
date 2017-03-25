@@ -26,7 +26,7 @@
  */
 
 #include <cstdlib>
-#include <cstdio>
+#include <fstream>
 #include <string>
 
 #include "vendor_init.h"
@@ -34,16 +34,40 @@
 #include "log.h"
 #include "util.h"
 
+#include "init_hi3650.h"
+
 void init_target_properties()
 {
-    std::string platform;
+    std::ifstream fin;
+    std::string buf;
 
-    platform = property_get("ro.board.platform");
+    std::string platform = property_get("ro.board.platform");
     if (platform != ANDROID_TARGET) {
 	return;
-    } else {
-        property_set("ro.product.model", "HONOR 8");
-	property_set("ro.build.fingerprint", "HONOR/FRD-L04/HWFRD:7.0/HUAWEIFRD-L04/C567B317:user/release-keys");
-	property_set("ro.build.description", "FRD-L04-user 7.0 HUAWEIFRD-L04 C567B317 release-keys");
+    }
+
+    fin.open("/sys/firmware/devicetree/base/hisi,product_name");
+    while (getline(fin, buf))
+        if ((buf.find("FRD-L02") != std::string::npos) || (buf.find("FRD-L04") != std::string::npos) || (buf.find("FRD-L09") != std::string::npos) || (buf.find("FRD-L14") != std::string::npos) || (buf.find("FRD-L19") != std::string::npos))
+            break;
+    fin.close();
+
+    if (buf.find("FRD-L02") != std::string::npos) {
+        property_set("ro.product.model", "FRD-L02");
+    }
+    else if (buf.find("FRD-L04") != std::string::npos) {
+        property_set("ro.product.model", "FRD-L04");
+    }
+    else if (buf.find("FRD-L09") != std::string::npos) {
+        property_set("ro.product.model", "FRD-L09");
+    }
+    else if (buf.find("FRD-L14") != std::string::npos) {
+        property_set("ro.product.model", "FRD-L14");
+    }
+    else if (buf.find("FRD-L19") != std::string::npos) {
+        property_set("ro.product.model", "FRD-L19");
+    }
+    else {
+	property_set("ro.product.model", "UNKNOWN");
     }
 }
