@@ -47,8 +47,8 @@ on early-init
     setprop persist.service.hdb.enable true
 
 on init
-    # NFC
-    symlink /dev/pn544 /dev/pn54x
+    # NXP HAL expects /dev/nq-nci
+    symlink /dev/pn544 /dev/nq-nci
 
     mkdir /cust
     mkdir /vendor
