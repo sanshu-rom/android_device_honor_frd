@@ -57,9 +57,13 @@ void init_target_properties()
     }
     else if (buf.find("FRD-L04") != std::string::npos) {
         property_set("ro.product.model", "FRD-L04");
+        property_set("ro.build.description", "FRD-L04-user 7.0 HUAWEIFRD-L04 C567B380 release-keys");
+        property_set("ro.build.fingerprint", "HONOR/FRD-L04/HWFRD:7.0/HUAWEIFRD-L04/C567B380:user/release-keys");	
     }
     else if (buf.find("FRD-L09") != std::string::npos) {
         property_set("ro.product.model", "FRD-L09");
+        property_set("ro.build.description", "FRD-L09-user 7.0 HUAWEIFRD-L09 C432B380 release-keys");
+        property_set("ro.build.fingerprint", "HONOR/FRD-L09/HWFRD:7.0/HUAWEIFRD-L09/C432B380:user/release-keys");
     }
     else if (buf.find("FRD-L14") != std::string::npos) {
         property_set("ro.product.model", "FRD-L14");
