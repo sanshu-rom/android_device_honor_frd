@@ -57,16 +57,35 @@ void init_target_properties()
     }
     else if (buf.find("FRD-L04") != std::string::npos) {
         property_set("ro.product.model", "FRD-L04");
+        property_set("ro.config.client_number", "1");
+        property_set("ro.config.modem_number", "1");
+        property_set("ro.config.hw_dsda", "false");
+        property_set("persist.dsds.enabled", "false");
+        property_set("persist.radio.nv_match_by_card", "2");
         property_set("ro.build.description", "FRD-L04-user 7.0 HUAWEIFRD-L04 C567B360 release-keys");
         property_set("ro.build.fingerprint", "HONOR/FRD-L04/HWFRD:7.0/HUAWEIFRD-L04/C567B360:user/release-keys");	
     }
     else if (buf.find("FRD-L09") != std::string::npos) {
         property_set("ro.product.model", "FRD-L09");
+        property_set("ro.config.client_number", "5");
+        property_set("ro.config.modem_number", "2");
+        property_set("ro.config.hw_dsda", "true");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsda");
+        property_set("ro.config.hw_device_mode", "ulg_mode");
+        property_set("rild.libargs1", "-m modem1");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("rild.libpath1", "/vendor/lib64/libbalong-ril-1.so");
         property_set("ro.build.description", "FRD-L09-user 7.0 HUAWEIFRD-L09 C432B380 release-keys");
         property_set("ro.build.fingerprint", "HONOR/FRD-L09/HWFRD:7.0/HUAWEIFRD-L09/C432B380:user/release-keys");
     }
     else if (buf.find("FRD-L14") != std::string::npos) {
         property_set("ro.product.model", "FRD-L14");
+        property_set("ro.config.client_number", "1");
+        property_set("ro.config.modem_number", "1");
+        property_set("ro.config.hw_dsda", "false");
+        property_set("persist.dsds.enabled", "false");
+        property_set("persist.radio.nv_match_by_card", "2");
         property_set("ro.build.description", "FRD-L14-user 7.0 HUAWEIFRD-L14 C567B360 release-keys");
         property_set("ro.build.fingerprint", "HONOR/FRD-L14/HWFRD:7.0/HUAWEIFRD-L14/C567B360:user/release-keys");
     }
