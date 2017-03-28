@@ -91,6 +91,17 @@ void init_target_properties()
     }
     else if (buf.find("FRD-L19") != std::string::npos) {
         property_set("ro.product.model", "FRD-L19");
+        property_set("ro.config.client_number", "5");
+        property_set("ro.config.modem_number", "2");
+        property_set("ro.config.hw_dsda", "true");
+        property_set("persist.dsds.enabled", "true");
+        property_set("persist.radio.multisim.config", "dsda");
+        property_set("ro.config.hw_device_mode", "ulg_mode");
+        property_set("rild.libargs1", "-m modem1");
+        property_set("ro.config.dsds_mode", "umts_gsm");
+        property_set("rild.libpath1", "/vendor/lib64/libbalong-ril-1.so");
+        property_set("ro.build.description", "FRD-L19-user 7.0 HUAWEIFRD-L19 C432B380 release-keys");
+        property_set("ro.build.fingerprint", "HONOR/FRD-L19/HWFRD:7.0/HUAWEIFRD-L19/C432B380:user/release-keys");
     }
     else {
 	property_set("ro.product.model", "UNKNOWN");
