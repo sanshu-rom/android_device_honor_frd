@@ -27,6 +27,17 @@ gsm.fastdormancy.mode=3
 ro.am.reschedule_service=true
 
 # RIL
+rild.libpath=/vendor/lib64/libbalong-ril.so
+rild.libargs=-m modem0
+persist.radio.modem.cap=8999D
+ro.multi.rild=false
+ro.telephony.default_network=9
+ro.config.full_network_support=false
+rild.rild1_ready_to_start=false
+ro.config.is_start_commril=true
+ro.config.hw_save_pin=true
+ro.config.default_commril_mode=ULG_MODE
+
 ro.telephony.ril_class=HwHisiRIL
 audioril.lib=libhuawei-audio-ril.so
 persist.radio.apm_sim_not_pwdn=1

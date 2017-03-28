@@ -153,10 +153,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 PRODUCT_PACKAGES += \
     power.hi3650
 
-# LTE, CDMA, GSM/WCDMA
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril.config=simactivation
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
