@@ -128,6 +128,7 @@ PRODUCT_PACKAGES += \
     libshim_gralloc
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.build.subproduct=F2FS \
     ro.magic.api.version=0.1 \
     ro.enable_boot_charger_mode=0 \
     persist.sys.usb.config=manufacture,adb \
