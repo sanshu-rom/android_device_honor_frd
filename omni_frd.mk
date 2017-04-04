@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 LineageOS
+# Copyright (C) 2017 OpenKirin, OldDroid
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,22 +14,10 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/huawei/frd/full_frd.mk)
+# Include hi3650 common
+$(call inherit-product, device/hisi/3650-common/device-common.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
-PRODUCT_NAME := lineage_frd
+PRODUCT_NAME := omni_frd
 PRODUCT_DEVICE := frd
+PRODUCT_BRAND := Honor
 PRODUCT_MODEL := HONOR-8
-
-PRODUCT_GMS_CLIENTID_BASE := android-huawei
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="HONOR/FRD-L04/HWFRD:7.0/HUAWEIFRD-L04/C567B317:user/release-keys" \
-    PRIVATE_BUILD_DESC="FRD-L04-user 7.0 HUAWEIFRD-L04 C567B317 release-keys" \
-    PRODUCT_NAME=FRD
