@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/huawei/frd
+LOCAL_PATH := device/honor/frd
 
 # Platform
 TARGET_BOARD_PLATFORM := hi3650
