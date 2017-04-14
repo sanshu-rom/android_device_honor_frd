@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/huawei/frd
+DEVICE_PATH := device/honor/frd
 
 include device/hisi/3650-common/BoardConfigCommon.mk
 
