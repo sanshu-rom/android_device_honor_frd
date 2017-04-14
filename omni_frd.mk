@@ -31,7 +31,7 @@ PRODUCT_PACKAGES += \
     charger
 
 PRODUCT_COPY_FILES += \
-    device/huawei/frd/kernel:kernel
+    device/honor/frd/kernel:kernel
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     sys.usb.configfs=1 \

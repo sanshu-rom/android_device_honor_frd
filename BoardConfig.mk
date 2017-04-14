@@ -27,7 +27,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00000000 --ramdisk_offset 0x08000000 --tags_offset 0x07a00000
 
 # prebuilt kernel
-TARGET_PREBUILT_KERNEL := device/huawei/frd/kernel
+TARGET_PREBUILT_KERNEL := device/honor/frd/kernel
 # else uncomment below to build from sauce
 # TARGET_KERNEL_SOURCE := kernel/huawei/frd
 # TARGET_KERNEL_CONFIG := frd_defconfig
