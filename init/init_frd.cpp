@@ -54,6 +54,13 @@ void init_target_properties()
 
     if (buf.find("FRD-L02") != std::string::npos) {
         property_set("ro.product.model", "FRD-L02");
+        property_set("ro.config.client_number", "1");
+        property_set("ro.config.modem_number", "1");
+        property_set("ro.config.hw_dsda", "false");
+        property_set("persist.dsds.enabled", "false");
+        property_set("persist.radio.nv_match_by_card", "2");
+        property_set("ro.build.description", "FRD-L02-user 7.0 HUAWEIFRD-L02 C675B310 release-keys");
+        property_set("ro.build.fingerprint", "HONOR/FRD-L02/HWFRD:7.0/HUAWEIFRD-L02/C675B310:user/release-keys");
     }
     else if (buf.find("FRD-L04") != std::string::npos) {
         property_set("ro.product.model", "FRD-L04");
