@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/huawei/frd
+LOCAL_PATH := device/honor/frd
 
 # Architecture
 TARGET_ARCH := arm64
@@ -105,7 +105,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 
-#TARGET_KERNEL_SOURCE := kernel/huawei/frd
+#TARGET_KERNEL_SOURCE := kernel/honor/frd
 #TARGET_KERNEL_CONFIG := lineage_hi3650_defconfig
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
@@ -135,7 +135,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_hi3650
 
 # RIL
 TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
-BOARD_RIL_CLASS := ../../../device/huawei/frd/ril
+BOARD_RIL_CLASS := ../../../device/honor/frd/ril
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := proprietary
 
@@ -153,7 +153,7 @@ TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_frd.cpp
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS += \
-	device/huawei/frd/sepolicy
+	device/honor/frd/sepolicy
 
 # Wifi
 TARGET_USES_64_BIT_BCMDHD	 := true
@@ -171,4 +171,4 @@ WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcm43455_hw.bin"
 WIFI_BAND                        := 802_11_ABG
 
 # inherit from the proprietary version
--include vendor/huawei/frd/BoardConfigVendor.mk
+-include vendor/honor/frd/BoardConfigVendor.mk
