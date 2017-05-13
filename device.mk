@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 $(call inherit-product-if-exists, vendor/honor/frd/frd-vendor.mk)
 
 # Overlay
@@ -70,6 +68,8 @@ PRODUCT_COPY_FILES += \
 
 # Vulkan
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level-0.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
@@ -111,6 +111,8 @@ PRODUCT_PACKAGES += \
     fstab.zram512m \
     fstab.zram1024m \
     fstab.zram1536m \
+    init.charger.rc \
+    init.chip.charger.rc \
     init.chip.usb.rc \
     init.hi3650.gps.rc \
     init.hi3650.power.rc \
@@ -135,21 +137,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     sys.usb.configfs=1 \
     sys.usb.controller=ff100000.dwc3
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=0 \
-    persist.sys.root_access=1 \
-    persist.service.adb.enable=1
-
-# adb as root
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
-
-# HWC
-#PRODUCT_PACKAGES += \
-#    hwcomposer.hi3650
-
 # Power HAL
 PRODUCT_PACKAGES += \
     power.hi3650
@@ -158,19 +145,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Bootanim
-PRODUCT_PACKAGES += \
-    bootanimation.zip
-
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     com.nxp.nfc.nq \
+    libnqnfc-nci \
+    libp61-jcop-kit \
     nfc_nci.nqx.default \
     NQNfcNci \
     nqnfcee_access.xml \
-    libnqnfc-nci \
-    libp61-jcop-kit \
+    nqnfcse_access.xml \
     Tag
 
 PRODUCT_COPY_FILES += \
