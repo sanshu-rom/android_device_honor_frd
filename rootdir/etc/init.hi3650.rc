@@ -174,7 +174,6 @@ on init
     chmod 0660 /sys/devices/virtual/graphics/fb0/vsync_event
     chown system system /sys/devices/virtual/graphics/fb0/mode
     chmod 0660 /sys/devices/virtual/graphics/fb0/mode
-    write /sys/devices/virtual/graphics/fb0/mode "U:1080x1920p-0"
 
     write /proc/sys/kernel/hung_task_panic 1
     write /proc/sys/kernel/hung_task_timeout_secs 120
@@ -308,7 +307,7 @@ on early-fs
     start oeminfo_nvm
 
 on fs
-    export LD_SHIM_LIBS /system/lib64/libcutils.so|libshim_log.so:/system/lib/libcutils.so|libshim_log.so:/vendor/lib64/libhwuibp.so|libshim_hwui.so:/system/lib/libhwmediamonitorservice.so|libshim_log.so:/system/lib64/libhwmediamonitorservice.so|libshim_log.so:/vendor/lib/hw/audio.primary.hi3650.so|libshim_audioroute.so:/vendor/lib64/hw/audio.primary.hi3650.so|libshim_audioroute.so:/vendor/lib/hwcam/hwcam.hi3650.m.FRD.so|libshim_ui.so:/vendor/lib64/hwcam/hwcam.hi3650.m.FRD.so|libshim_ui.so:/vendor/lib/libcamera_algo.so|libshim_ui.so:/vendor/lib64/libcamera_algo.so|libshim_ui.so:/vendor/lib/libcamera_ivp.so|libshim_ui.so:/vendor/lib64/libcamera_ivp.so|libshim_ui.so:/vendor/lib/hw/gralloc.hi3650.so|libshim_gralloc.so:/vendor/lib64/hw/gralloc.hi3650.so|libshim_gralloc.so
+    export LD_SHIM_LIBS /system/lib64/libcutils.so|libshim_log.so:/system/lib/libcutils.so|libshim_log.so:/vendor/lib64/libhwuibp.so|libshim_hwui.so:/system/lib/libhwmediamonitorservice.so|libshim_log.so:/system/lib64/libhwmediamonitorservice.so|libshim_log.so:/vendor/lib/hw/audio.primary.hi3650.so|libshim_audioroute.so:/vendor/lib64/hw/audio.primary.hi3650.so|libshim_audioroute.so:/vendor/lib/hw/gralloc.hi3650.so|libshim_gralloc.so:/vendor/lib64/hw/gralloc.hi3650.so|libshim_gralloc.so:/vendor/lib/hwcam/hwcam.hi3650.m.FRD.so|libshim_ui.so:/vendor/lib64/hwcam/hwcam.hi3650.m.FRD.so|libshim_ui.so:/vendor/lib/libcamera_algo.so|libshim_ui.so:/vendor/lib64/libcamera_algo.so|libshim_ui.so:/vendor/lib/libcamera_ivp.so|libshim_ui.so:/vendor/lib64/libcamera_ivp.so|libshim_ui.so:/vendor/lib/hw/gralloc.hi3650.so|libshim_gralloc.so:/vendor/lib64/hw/gralloc.hi3650.so|libshim_gralloc.so:/vendor/lib/hw/copybit.hi3650.so|libshim_gui.so:/vendor/lib64/hw/copybit.hi3650.so|libshim_gui.so:/system/lib/libshim_gui.so|libshim_ui.so:/system/lib64/libshim_gui.so|libshim_ui.so
 
     wait /dev/block/bootdevice/by-name
     mount_all fstab.hi3650
@@ -800,7 +799,6 @@ on boot
     chmod 644 /sys/class/leds/lcd_backlight0/brightness
 
     write /sys/block/zram0/comp_algorithm lz4
-    swapon_all fstab.hi3650
 
     chown radio radio /dev/madapt
     chmod 0660 /dev/madapt
@@ -1122,7 +1120,7 @@ on charger
 service HwCamCfgSvr /vendor/bin/HwCamCfgSvr hi3650 FRD
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system
+    group audio camera inet net_bt net_bt_admin net_bw_acct wakelock system
     ioprio rt 4
     writepid /dev/cpuset/system-background/tasks
 
@@ -1191,10 +1189,11 @@ service modemlogcat_VIA /vendor/bin/modemlogcat_via -t /dev/ttySPI1 -p /data/log
 on property:sys.userdata_is_ready=1
     exec - root root -- /system/bin/sh /vendor/etc/blkcg_init.sh 0 0
 
-service perfhub /system/vendor/bin/perfhub
+service perfhub /vendor/bin/perfhub
     class core
     user system
-    group system
+    group system wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 on property:persist.sys.huawei.debug.on=0
     chown system system /sys/class/sensors/sensorhub_dump
@@ -1231,7 +1230,7 @@ service ril-daemon /vendor/bin/rild
     socket sap_uim_socket1 stream 660 bluetooth bluetooth    
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log readproc system
+    group radio cache inet misc audio log readproc wakelock system
     disabled
 
 service ril-daemon1 /vendor/bin/rild -c 1
@@ -1239,9 +1238,10 @@ service ril-daemon1 /vendor/bin/rild -c 1
     class core
     socket rilds2 stream 660 root radio
     socket rild-debug1 stream 660 radio system
+    socket sap_uim_socket2 stream 660 bluetooth bluetooth
     socket rild-balong-test stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log
+    group radio cache inet misc audio log readproc wakelock
 
 on property:sys.userdata_is_ready=1
     write /sys/devices/platform/his_modem/modem_sysboot_start 1
@@ -1338,7 +1338,7 @@ service thermal-daemon /vendor/bin/thermal-daemon
     user system
     group system
 
-service limit_current /vendor/bin/limit_current -l
+service limit_current /system/vendor/bin/limit_current -l
     user system
     group system
     disabled
@@ -1367,12 +1367,6 @@ service teecd /sbin/teecd
     user root
     group root readproc
     seclabel u:r:tee:s0
-
-service charger_huawei /sbin/healthd -c
-   class charger
-   user root
-   group graphics
-   disabled
 
 service cs-set /system/bin/cs-set
     user root
@@ -1424,3 +1418,19 @@ service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group input
+
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system readproc
+    critical
+    onrestart restart healthd
+    onrestart restart zygote
+    onrestart restart audioserver
+    onrestart restart media
+    onrestart restart surfaceflinger
+    onrestart restart inputflinger
+    onrestart restart drm
+    onrestart restart cameraserver
+    onrestart restart perfhub
+    writepid /dev/cpuset/system-background/tasks
