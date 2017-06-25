@@ -127,7 +127,8 @@ PRODUCT_PACKAGES += \
 
 # LIBShim
 PRODUCT_PACKAGES += \
-    libshim_gralloc
+    libshim_gralloc \
+    libshim_stagefright
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.build.subproduct=F2FS \
