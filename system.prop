@@ -18,6 +18,9 @@ persist.sys.fingersense=1
 ro.opengles.version=196610
 ro.sf.lcd_density=480
 
+# Camera
+camera.hal1.packagelist=com.google.android.GoogleCamera
+
 # local
 net.tethering.noprovisioning=true
 ro.config.hw_lte_support=true
