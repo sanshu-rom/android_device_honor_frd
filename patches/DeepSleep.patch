@@ -50,3 +50,4 @@
 +    }
      int32_t type = hw->getDisplayType();
      int currentMode = hw->getPowerMode();
+ 
